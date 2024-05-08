@@ -17,12 +17,13 @@ def main():
 
     move = 90
     dir = 1
+    score = 0
     size = (x, y)
     screen = pygame.display.set_mode(size, pygame.RESIZABLE)
     pygame.display.set_caption("Circle Game")
+    font = pygame.font.SysFont(None, 64)
 
     point = random.randint(0, 360)
-    score = 0
     carry_on = True
     clock = pygame.time.Clock()
     was_in_range = False
@@ -36,6 +37,9 @@ def main():
             if event.type == pygame.QUIT:
                 carry_on = False
         screen.fill((255, 255, 255))
+
+        img = font.render("Score: " + str(score), True, (255, 0, 255))
+        screen.blit(img, (40, 40))
 
         if screen.get_height() < screen.get_width():
             diam = 2*screen.get_height()/3
